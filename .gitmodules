@@ -1,0 +1,12 @@
+[submodule "vendor/jquery-ui"]
+	path = vendor/jquery-ui
+	url = https://github.com/jquery/jquery-ui.git
+[submodule "vendor/malsup/form"]
+	path = vendor/malsup/form
+	url = https://github.com/malsup/form.git
+[submodule "vendor/balupton/history"]
+	path = vendor/balupton/history
+	url = https://github.com/balupton/history.js.git
+[submodule "vendor/h5bp/html5-boilerplate"]
+	path = vendor/h5bp/html5-boilerplate
+	url = https://github.com/h5bp/html5-boilerplate.git

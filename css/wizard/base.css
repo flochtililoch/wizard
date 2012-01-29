@@ -1,0 +1,158 @@
+/* COMMON */
+.wizard
+{
+	width:902px;
+	background: #e5e5e5;
+	padding: 15px;
+	margin: 0 auto;
+	position:relative;
+}
+
+.left
+{
+	float:left;
+	width:515px;
+}
+
+.right
+{
+	float:right;
+	width:355px;
+	margin:10px 0 0;
+	clear: right;
+}
+
+.right button
+{
+	float:right;
+}
+
+.step
+{
+	height:399px;
+}
+
+.steps
+{
+  list-style:none;
+  margin:0;
+  padding:0;
+  float:right;
+	border:1px solid grey;
+	color:#fff;
+	font-size:15px;
+	width: 373px;
+}
+
+.steps li
+{
+	float:left;
+	background:#fff;
+	color:grey;
+	line-height:24px;
+	overflow:hidden;
+  white-space:nowrap;
+  width: 26px;
+  margin-bottom:0;
+}
+
+.steps li.enabled
+{
+	width:295px;
+}
+
+.steps a
+{
+	color:grey;
+	display:block;
+	text-decoration:none;
+}
+
+.steps li:before
+{
+	background:lightgrey;
+	width:25px;
+	height:24px;
+	display:block;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	float:left;
+	margin-right:10px;
+	line-height:24px;
+}
+
+.steps li.enabled:before
+{
+	background:grey;
+}
+
+.steps .step1:before
+{
+	content:"1";
+}
+
+.steps .step2:before
+{
+	content:"2";
+}
+
+.steps .step3:before
+{
+	content:"3";
+}
+
+.steps .step4:before
+{
+	content:"4";
+	width:26px;
+}
+
+.steps .info
+{
+	float: right;
+  width: 23px;
+}
+
+.steps .info.enabled
+{
+    width:292px;
+}
+
+#step-content
+{
+	background:lightgreen;
+}
+
+.box
+{
+	background:white;
+	padding:10px;
+}
+
+.box h2
+{
+  padding:0;
+	margin:0;
+  width:358px;
+	font-size:1em;
+}
+
+.box.disabled h2
+{
+	color:lightgrey;
+}
+
+.box.folded form
+{
+	height:0;
+	display:none;
+}
+
+.box.active
+{
+	border:1px solid lightgrey;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}

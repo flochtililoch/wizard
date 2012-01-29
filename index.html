@@ -1,0 +1,89 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Wizard prototype - Step 1</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/wizard/base.css">
+  <script src="js/libs/modernizr.js"></script>
+</head>
+
+<body>
+  <header>
+	
+  </header>
+  <div role="main">
+	<h1>Wizard Prototype - Step 1</h1>
+	<div class="wizard clearfix ajaxified">
+		<ol class="steps" id="wizard-steps">
+      <li class="step1 enabled">
+        <a href="index.html">Step 1</a>
+      </li>
+      <li class="step2">
+        <a href="#">Step 2</a>
+      </li>
+			<li class="step3">
+        <a href="#">Step 3</a>
+      </li>
+			<li class="step4">
+        <a href="#">Step 4</a>
+      </li>
+    </ol>
+		<div class="left step updatable" id="step-content">
+		
+		</div>
+		<div class="right box updatable" id="step1">
+			<h2>Step 1 : Lorem ipsum</h2>
+			<form method="post" action="step2.html">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Duis nec orci sed tellus tincidunt egestas.
+					Etiam sit amet nisl vitae justo mollis elementum.
+					Integer dignissim iaculis tortor, sed accumsan dolor ultricies sit amet.
+				</p>
+				<p>
+					<button type="submit">Next</button>
+				</p>
+			</form>
+		</div>
+		<div class="right box updatable folded disabled" id="step2">
+			<h2>Step 2 : Duis nec orci</h2>
+		</div>
+		<div class="right box updatable folded disabled" id="step3">
+			<h2>Step 3 : Etiam sit amet</h2>
+		</div>
+		<div class="right box updatable folded disabled" id="step4">
+			<h2>Step 4 : Integer dignissim</h2>
+		</div>
+	</div>
+  </div>
+  <footer>
+
+  </footer>
+  <script src="js/libs/jquery.js"></script>
+  <script src="js/libs/jquery-ui/jquery.effects.core.js"></script>
+  <script src="js/libs/jquery.history.js"></script>
+  <script src="js/libs/jquery.form.js"></script>
+  <script src="js/libs/base.js"></script>
+  <script src="js/wizard/base.js"></script>
+  <script src="js/wizard/step1.js"></script>
+  <script>
+  //<![CDATA[
+  $(document).ready(function(){$$.launch();});
+  //]]>
+  </script>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+</body>
+</html>
