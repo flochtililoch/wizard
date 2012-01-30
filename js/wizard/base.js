@@ -46,7 +46,8 @@ function Wizard(options){
 		{
 			// Replace contextual elements
 			$('title')[0].innerHTML = data.title;
-			$(o.currentStepSelector).removeClass('enabled', o.effectDuration).siblings('.' + step).addClass('enabled', o.effectDuration);
+			$('h1')[0].innerHTML = data.title;
+			$('ol.steps li.enabled').removeClass('enabled', o.effectDuration).siblings('.' + step).addClass('enabled', o.effectDuration);
 
 			// Hide current step
 			currentStep.addClass('folded', o.effectDuration);
@@ -84,8 +85,7 @@ function Wizard(options){
 })(window);
 
 var myWizard = new Wizard({
-	steps: ['step1', 'step2', 'step3', 'step4'],
-	currentStepSelector: 'ol.steps li.enabled'
+	steps: ['step1', 'step2', 'step3', 'step4']
 });
 
 myWizard.formSuccess = function(response, status, xhr, form){
