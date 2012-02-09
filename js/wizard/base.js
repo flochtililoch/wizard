@@ -1,21 +1,26 @@
 // WIZARD HANDLER
-function Wizard(options){
+var Wizard = (function($, History){
 	
-	var defaults = {
-		effectDuration: 200
-	};
-	
-	// merge default options & user options
-	var o =  jQuery.extend(defaults, options);
+	var
+	  self = {},
+	  defaults = { effectDuration: 200 },
+	  o = {};
 	
 	// check if given step exists
-	this.isValidStep = function(step){
+	function isValidStep(step){
 		return $.inArray(step, o.steps ) > -1 ? true : false;
 	};
 	
+	self.configure = function(options)
+	{
+	  // merge default options & user options
+  	o =  jQuery.extend(defaults, options);
+  	return this;
+	}
+	
 	// save current step data in browser history
-	this.save = function(step, url, content, title){
-		if(!this.isValidStep(step)){
+	self.save = function(step, url, content, title){
+		if(!isValidStep(step)){
 			return false;
 		}
 
@@ -35,8 +40,8 @@ function Wizard(options){
 	};
 	
 	// load new step
-	this.load = function(step, data){
-		if(!this.isValidStep(step)){
+	self.load = function(step, data){
+		if(!isValidStep(step)){
 			return false;
 		}
 		
@@ -63,7 +68,9 @@ function Wizard(options){
 			});
 		}
 	};
-};
+
+	return self;
+}(jQuery, History));
 
 // HISTORY HANDLER
 (function(window,undefined){
@@ -79,29 +86,26 @@ function Wizard(options){
 	History.Adapter.bind(window,'statechange',function(){
 		var State = History.getState();
 		console.log(State, window.location);
-		myWizard.load(State.title, State.data);
+		Wizard.load(State.title, State.data);
 	});
 
 })(window);
 
-var myWizard = new Wizard({
-	steps: ['step1', 'step2', 'step3', 'step4']
-});
-
-myWizard.formSuccess = function(response, status, xhr, form){
-
-	// Evaluate new scripts
-	var scriptsRegex = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-	var existingScripts = ($('head').html() + $('body').html()).match(scriptsRegex);
-	var newScripts = $.grep(response.match(scriptsRegex), function(n, i){
-			return ($.inArray(n, existingScripts) !== -1);
-	}, true);
-	$('body').append($(newScripts.join('')));
+Wizard
+  .configure({steps: ['step1', 'step2', 'step3', 'step4']})
+  .formSuccess = function(response, status, xhr, form){
+  	// Evaluate new scripts
+  	var scriptsRegex = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+  	var existingScripts = ($('head').html() + $('body').html()).match(scriptsRegex);
+  	var newScripts = $.grep(response.match(scriptsRegex), function(n, i){
+  			return ($.inArray(n, existingScripts) !== -1);
+  	}, true);
+  	$('body').append($(newScripts.join('')));
 	
-	// Save new step into history
-	var nextStep = form.attr('action').match(/(.*).html/)[1];
-	var data = myWizard.save(nextStep, form.attr('action'), response, response.match(/<title>(.*?)<\/title>/)[1]);
-	
-	// Then run registered actions
-	$$.launch();
-};
+  	// Save new step into history
+  	var nextStep = form.attr('action').match(/(.*).html/)[1];
+  	var data = Wizard.save(nextStep, form.attr('action'), response, response.match(/<title>(.*?)<\/title>/)[1]);
+
+  	// Then run registered actions
+  	$$.launch();
+  };
